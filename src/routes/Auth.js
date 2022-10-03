@@ -1,6 +1,6 @@
-import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import React ,{ useState } from "react";
-import { AuthService, firebaseInstance} from "../fbase";
+import { AuthService} from "../fbase";
 
 const Auth=() => {
     const [email , setEmail] = useState("");
@@ -43,9 +43,8 @@ const Auth=() => {
         if(name === "google"){
             //do Something.
             // provider = new firebaseInstance.GoogleAuthProvider();
-
-            provider = new GoogleAuthProvider();
-            const data = await signInWithPopup(provider)
+            provider = new GoogleAuthProvider()
+            const data = await signInWithPopup(AuthService,provider)
             console.log(data)
         }
     }
