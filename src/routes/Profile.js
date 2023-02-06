@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {AuthService, dbService} from "../fbase";
 import {collection, getDocs, query, where} from "firebase/firestore";
 import {updateProfile} from "firebase/auth"
-export default ({userobj}) => {
+export default ({refreshUser, userobj}) => {
     const navi = useNavigate();
     const [newDisplayName, setNewDisplayName] = useState(userobj.displayName);
     const onLogoutClick=_=>{
@@ -29,6 +29,7 @@ export default ({userobj}) => {
                 displayName : newDisplayName,
                 photoURL : userobj.photoURL
             }).then((e)=>console.log(e))
+            refreshUser()
         }
     }
     useEffect(()=>{
