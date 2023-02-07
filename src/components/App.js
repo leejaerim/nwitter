@@ -20,6 +20,7 @@ function App() {
         //setUserObj(user)
       } else {
         setIsLoggedIn(false);
+        setUserObj(null);
       }
       setInit(true);
     })
@@ -28,10 +29,15 @@ function App() {
     //currentUser 자체가 큰 오브젝트로 react가 리랜더링에
     const user = AuthService.currentUser
     setUserObj({
-      displayName:user.displayName,
-      uid:user.uid,
-      updateProfile: (args)=> updateProfile(user,{displayName:user?.displayName, photoURL:user?.photoURL, uid:user?.uid}),
-    })
+      displayName: user.displayName,
+      uid: user.uid,
+      updateProfile: (args) => updateProfile(user, { displayName: user.displayName }),
+    });
+    // setUserObj({
+    //   displayName:user.displayName,
+    //   uid:user.uid,
+    //   updateProfile: (args)=> updateProfile(user,{displayName:user?.displayName, photoURL:user?.photoURL, uid:user?.uid}),
+    // })
     //setUserObj(Object.assign({},user));
   }
   return (

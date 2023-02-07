@@ -25,11 +25,8 @@ export default ({refreshUser, userobj}) => {
     const onSubmit =(e)=>{
         e.preventDefault();
         if(userobj.displayName !== newDisplayName){
-            updateProfile(userobj,{
-                displayName : newDisplayName,
-                photoURL : userobj.photoURL
-            }).then((e)=>console.log(e))
-            refreshUser()
+            updateProfile(userobj, { displayName: newDisplayName });
+            refreshUser();
         }
     }
     useEffect(()=>{
@@ -38,6 +35,7 @@ export default ({refreshUser, userobj}) => {
     //console.log(userobj)
     return (
         <>
+            <div>{userobj.displayName}</div>
             <form onSubmit={onSubmit}>
                 <input type={"text"} onChange={onChange} placeholder={"Display name"} value={newDisplayName}/>
                 <input type={"submit"} value={"Update Profile"}/>
